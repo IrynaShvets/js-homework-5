@@ -1,14 +1,14 @@
-const num = prompt("Введіть, будь ласка число від 1 до 100.");
+const num4 = prompt("Введіть, будь ласка число від 1 до 100.");
 
-numbersRange(num);
+numbersRange(num4);
 
-function numbersRange(num) {
-  const numParse = Number.isFinite(parseFloat(num));
+function numbersRange(num4) {
+  const numParse4 = Number.isFinite(parseFloat(num4));
 
-  if (numParse === false) {
+  if (numParse4 === false) {
     alert("Ви ввели не число.");
-  } else if (numParse === true) {
-    const n = parseInt(num);
+  } else if (numParse4 === true) {
+    const n = parseInt(num4);
 
     if (n === 0) {
         alert("Вибачте, але ви не ввели число, яке від 1 до 100.");
