@@ -1,6 +1,6 @@
 const question = prompt("В якій країні ти проживаєш?");
 
-if (question.toLowerCase() === "") {
+if (question === "") {
     alert("Введіть дані.");
     prompt("В якій країні ти проживаєш?");
   }  else if (typeof question ===  "number") {
