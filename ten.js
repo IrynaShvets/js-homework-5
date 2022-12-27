@@ -1,4 +1,43 @@
+const value = prompt("Введіть, будь ласка, камінь, ножиці або папір.");
 
+chooseRockScissorsPaper(value);
+
+function chooseRockScissorsPaper(value) {
+  const arr = ["камінь", "ножиці", "папір"];
+  const random = Math.floor(Math.random() * arr.length);
+  const randomValue = arr[random];
+  console.log(randomValue);
+
+  if (typeof value === "string") {
+    if (value === "камінь" && randomValue === "камінь") {
+      alert("Нічия");
+    } else if (value === "ножиці" && randomValue === "ножиці") {
+      alert("Нічия");
+    } else if (value === "папір" && randomValue === "папір") {
+        alert("Нічия");
+      }
+      else if (value === "папір" && randomValue === "камінь") {
+        alert("Вітаю! Ви виграли.");
+      }
+      else if (value === "ножиці" && randomValue === "папір") {
+        alert("Вітаю! Ви виграли.");
+      }
+      else if (value === "камінь" && randomValue === "ножиці") {
+        alert("Вітаю! Ви виграли.");
+      }
+      else if (value === "камінь" && randomValue === "папір") {
+        alert("На жаль, ви програли.");
+      }
+      else if (value === "папір" && randomValue === "ножиці") {
+        alert("На жаль, ви програли.");
+      }
+      else if (value === "ножиці" && randomValue === "камінь") {
+        alert("На жаль, ви програли.");
+      } else {
+        alert("Ви ввели не те значення.");
+      }
+  }
+}
 
 /* 
 10. Создайте игру "Камень-ножницы-бумага". 
