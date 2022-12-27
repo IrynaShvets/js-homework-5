@@ -1,4 +1,54 @@
+const money = prompt(
+  "Введіть, будь ласка, суму грошей, яку ви хочете поставити на гру."
+);
+alert(
+  "Введіть, будь ласка, діапазон чисел в яких ви хочете грати, наприклад від 5 до 9."
+);
+const min = prompt("Введіть спочатку перше число.");
+const max = prompt("Введіть друге число.");
+const n1 = parseInt(min);
+const n2 = parseInt(max);
 
+guessNumber(money, n1, n2);
+
+function guessNumber(money, n1, n2) {
+  const moneyParse = Number.isFinite(parseFloat(money));
+  const n9 = parseInt(money);
+  const prise = (n2 - n1) * 0.1 + n9;
+
+  console.log(prise);
+  if (moneyParse === false) {
+    alert("Ви нічого не ввели або ввели не число.");
+  } else if (moneyParse === true) {
+    alert(`Ви виграєте ${prise} грн.`);
+    const randomUser = prompt(
+      "Відгадай число! Введіть число з заданого вами діапазону і виграйте приз, якщо відгадаєте."
+    );
+    const parseRandomUser = parseInt(randomUser);
+    console.log(parseRandomUser);
+    if (parseRandomUser >= n1 || parseRandomUser <= n2) {
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      const r = getRandomIntInclusive(n1, n2);
+
+      console.log(r);
+      if (parseRandomUser === r) {
+        alert(
+          `Ура! Вітаємо переможця! Ви відгадали число і виграли ${prise} грн.`
+        );
+      }
+      if (parseRandomUser !== r) {
+        alert(`На жаль, ви програли ${money} грн.`);
+      }
+    } else {
+      alert("На жаль, ви ввели число не в заданому діапазоні.");
+    }
+  }
+}
 
 /* 
 9. Создайте игру "Угадай число". Попросите пользователя ввести сумму денег, которую он хочет поставить на игру. 
