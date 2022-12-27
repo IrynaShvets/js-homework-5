@@ -13,39 +13,41 @@ guessNumber(money, n1, n2);
 
 function guessNumber(money, n1, n2) {
   const moneyParse = Number.isFinite(parseFloat(money));
+  const minParse = Number.isFinite(parseFloat(min));
+  const maxParse = Number.isFinite(parseFloat(max));
+
   const n9 = parseInt(money);
   const prise = (n2 - n1) * 0.1 + n9;
 
   console.log(prise);
-  if (moneyParse === false) {
+  if (moneyParse === false || minParse === false || maxParse === false) {
     alert("Ви нічого не ввели або ввели не число.");
-  } else if (moneyParse === true) {
+  } else if (moneyParse === true || minParse === true || maxParse === true) {
     alert(`Ви виграєте ${prise} грн.`);
     const randomUser = prompt(
       "Відгадай число! Введіть число з заданого вами діапазону і виграйте приз, якщо відгадаєте."
     );
     const parseRandomUser = parseInt(randomUser);
     console.log(parseRandomUser);
-    if (parseRandomUser >= n1 || parseRandomUser <= n2) {
-      function getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
 
-      const r = getRandomIntInclusive(n1, n2);
-
-      console.log(r);
-      if (parseRandomUser === r) {
-        alert(
-          `Ура! Вітаємо переможця! Ви відгадали число і виграли ${prise} грн.`
-        );
-      }
-      if (parseRandomUser !== r) {
-        alert(`На жаль, ви програли ${money} грн.`);
-      }
-    } else {
+    if (parseRandomUser < n1 || parseRandomUser > n2) {
       alert("На жаль, ви ввели число не в заданому діапазоні.");
+    }
+
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const server = getRandomIntInclusive(n1, n2);
+    console.log(server);
+
+    if (parseRandomUser === server) {
+      alert(
+        `Ура! Вітаємо переможця! Ви відгадали число і виграли ${prise} грн.`
+      );
+    } else if (parseRandomUser !== server) {
+      alert(`На жаль, ви програли ${money} грн.`);
     }
   }
 }
